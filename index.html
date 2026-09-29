@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Niets van derden: alleen eigen bestanden, plus de versie-info van de GitHub-API. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; script-src 'self'; img-src 'self'; connect-src https://api.github.com; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="light dark">
+  <title>Index downloaden · persoonlijke financiën op je eigen computer</title>
+  <meta name="description" content="Download Index voor macOS, Windows of Linux. Een app voor je persoonlijke financiën waarbij al je gegevens versleuteld op je eigen computer blijven.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Index: persoonlijke financiën, privé op je eigen computer">
+  <meta property="og:description" content="Download Index voor macOS, Windows of Linux. Al je gegevens blijven versleuteld op je eigen computer.">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="download.js" defer></script>
+</head>
+<body>
+  <!-- Iconen: Lucide (ISC-licentie), https://lucide.dev -->
+  <div class="wrap">
+    <header class="site-head">
+      <a class="brand" href="./">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M17 14h.01"/><path d="M7 7h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14"/></svg>
+        </span>
+        <span class="brand-name">Index</span>
+      </a>
+      <a class="head-link" href="https://github.com/mitaadevelop/Index/releases">Alle versies</a>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Je financiën, privé op je eigen computer</h1>
+        <p class="lead">Index houdt je uitgaven, budgetten en spaardoelen bij. Al je gegevens blijven versleuteld op je eigen computer. Je hebt geen account nodig en er gaat niets naar een server.</p>
+
+        <div class="cta">
+          <a class="btn-primary" id="dl-main" href="https://github.com/mitaadevelop/Index/releases/latest">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+            <span id="dl-main-label">Download Index</span>
+          </a>
+          <p class="cta-note" id="dl-main-note">Voor macOS, Windows en Linux</p>
+          <p class="cta-alt" id="dl-alt" hidden></p>
+          <p class="notice" id="dl-notice" role="status" hidden></p>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="all-title">
+        <h2 id="all-title">Alle downloads</h2>
+        <ul class="dl-list" id="alle-downloads">
+          <li class="dl-row" data-key="mac-arm">
+            <div class="dl-info"><span class="dl-os">macOS</span><span class="dl-desc">Apple-chip (M1 of nieuwer)</span></div>
+            <span class="dl-meta"><span class="dl-type">.dmg</span><span class="dl-size"></span></span>
+            <a class="btn-secondary" data-file="index-macos-apple-silicon.dmg" href="https://github.com/mitaadevelop/Index/releases/latest/download/index-macos-apple-silicon.dmg">Download<span class="sr-only"> voor macOS met Apple-chip</span></a>
+          </li>
+          <li class="dl-row" data-key="mac-intel">
+            <div class="dl-info"><span class="dl-os">macOS</span><span class="dl-desc">Intel-processor</span></div>
+            <span class="dl-meta"><span class="dl-type">.dmg</span><span class="dl-size"></span></span>
+            <a class="btn-secondary" data-file="index-macos-intel.dmg" href="https://github.com/mitaadevelop/Index/releases/latest/download/index-macos-intel.dmg">Download<span class="sr-only"> voor macOS met Intel-processor</span></a>
+          </li>
+          <li class="dl-row" data-key="win">
+            <div class="dl-info"><span class="dl-os">Windows</span><span class="dl-desc">Windows 10 en 11</span></div>
+            <span class="dl-meta"><span class="dl-type">.exe</span><span class="dl-size"></span></span>
+            <a class="btn-secondary" data-file="index-windows-setup.exe" href="https://github.com/mitaadevelop/Index/releases/latest/download/index-windows-setup.exe">Download<span class="sr-only"> voor Windows</span></a>
+          </li>
+          <li class="dl-row" data-key="linux">
+            <div class="dl-info"><span class="dl-os">Linux</span><span class="dl-desc">AppImage, voor de meeste distributies</span></div>
+            <span class="dl-meta"><span class="dl-type">.AppImage</span><span class="dl-size"></span></span>
+            <a class="btn-secondary" data-file="index-linux.AppImage" href="https://github.com/mitaadevelop/Index/releases/latest/download/index-linux.AppImage">Download<span class="sr-only"> voor Linux (AppImage)</span></a>
+          </li>
+          <li class="dl-row" data-key="linux-deb">
+            <div class="dl-info"><span class="dl-os">Linux</span><span class="dl-desc">Debian en Ubuntu</span></div>
+            <span class="dl-meta"><span class="dl-type">.deb</span><span class="dl-size"></span></span>
+            <a class="btn-secondary" data-file="index-linux.deb" href="https://github.com/mitaadevelop/Index/releases/latest/download/index-linux.deb">Download<span class="sr-only"> voor Debian en Ubuntu</span></a>
+          </li>
+        </ul>
+        <p class="version-line" id="version-line" hidden></p>
+      </section>
+
+      <section class="panel" aria-labelledby="first-title">
+        <h2 id="first-title">De eerste keer openen</h2>
+        <p class="panel-intro">Index is nog niet ondertekend bij Apple of Microsoft. Daarom waarschuwt je computer je de eerste keer dat je de app opent. Zo open je hem toch:</p>
+        <details id="help-mac">
+          <summary>macOS</summary>
+          <ol>
+            <li>Open de <code>.dmg</code> en sleep Index naar <em>Apps</em>.</li>
+            <li>Open Index. Je krijgt een melding dat de app niet gecontroleerd kan worden.</li>
+            <li>Ga naar <em>Systeeminstellingen → Privacy en beveiliging</em>, scroll naar beneden en klik bij Index op <em>Open toch</em>.</li>
+          </ol>
+          <p>Zegt macOS dat de app "beschadigd" is? Voer dan dit uit in Terminal en open Index opnieuw:</p>
+          <pre class="cmd"><code>xattr -cr /Applications/Index.app</code></pre>
+          <p>Weet je niet welke Mac je hebt? Kies in het Apple-menu linksboven <em>Over deze Mac</em>. Staat er "Chip Apple M…", dan heb je een Apple-chip.</p>
+        </details>
+        <details id="help-win">
+          <summary>Windows</summary>
+          <p>Zie je de melding "Windows heeft uw pc beschermd"? Kies dan <em>Meer info</em> en daarna <em>Toch uitvoeren</em>.</p>
+        </details>
+        <details id="help-linux">
+          <summary>Linux</summary>
+          <p><strong>AppImage:</strong> maak het bestand uitvoerbaar en start het.</p>
+          <pre class="cmd"><code>chmod +x index-linux.AppImage
+./index-linux.AppImage</code></pre>
+          <p><strong>Debian of Ubuntu:</strong> installeer het pakket.</p>
+          <pre class="cmd"><code>sudo apt install ./index-linux.deb</code></pre>
+        </details>
+      </section>
+
+      <section class="features" aria-label="Wat Index doet">
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+          <h3>Versleuteld</h3>
+          <p>Je gegevens staan versleuteld op je eigen computer, achter je eigen wachtwoord.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 11V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M2 15h10"/><path d="m9 18 3-3-3-3"/></svg></span>
+          <h3>Importeer je bank</h3>
+          <p>Lees de export van je bank in: CSV, CAMT.053, MT940, OFX of QIF.</p>
+        </div>
+        <div class="feature">
+          <span class="feature-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></span>
+          <h3>Werkt zichzelf bij</h3>
+          <p>Je downloadt Index één keer. Nieuwe versies installeer je daarna met één klik.</p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-foot">
+      <p>Deze pagina gebruikt geen cookies of trackers. De versie-informatie komt rechtstreeks van GitHub.</p>
+    </footer>
+  </div>
+</body>
+</html>

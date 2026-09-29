@@ -6,6 +6,8 @@ In deze repository staan alleen de installers en de updatebestanden. Je download
 
 ## Downloaden
 
+Op de **[downloadpagina](https://mitaadevelop.github.io/Index/)** kies je met één knop de juiste versie voor je computer. Je kunt ook hieronder zelf een bestand kiezen.
+
 | Platform | Download |
 |---|---|
 | macOS: Apple Silicon (M1 en nieuwer) | [index-macos-apple-silicon.dmg](https://github.com/mitaadevelop/Index/releases/latest/download/index-macos-apple-silicon.dmg) |

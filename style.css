@@ -1,0 +1,199 @@
+/* Downloadpagina van Index — dezelfde tokens als de app (zinc, licht met donkere variant). */
+:root {
+  color-scheme: light;
+  --canvas: #FAFAFA;
+  --surface: #FFFFFF;
+  --surface-muted: #F4F4F5;
+  --border: #E4E4E7;
+  --border-strong: #D4D4D8;
+  --text: #09090B;
+  --text-2: #3F3F46;
+  --text-muted: #71717A;
+  --primary: #18181B;
+  --primary-hover: #27272A;
+  --primary-fg: #FAFAFA;
+  --orange-text: #92400E;
+  --orange-bg: #FFFBEB;
+  --orange-line: #FDE68A;
+  --focus: 0 0 0 3px rgba(24, 24, 27, 0.18);
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --canvas: #09090B;
+    --surface: #141417;
+    --surface-muted: #27272A;
+    --border: #27272A;
+    --border-strong: #3F3F46;
+    --text: #FAFAFA;
+    --text-2: #D4D4D8;
+    --text-muted: #A1A1AA;
+    --primary: #FAFAFA;
+    --primary-hover: #E4E4E7;
+    --primary-fg: #18181B;
+    --orange-text: #FCD34D;
+    --orange-bg: rgba(245, 158, 11, 0.12);
+    --orange-line: rgba(245, 158, 11, 0.30);
+    --focus: 0 0 0 3px rgba(250, 250, 250, 0.22);
+  }
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--text);
+  font: 15px/1.55 "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-underline-offset: 3px; }
+a:focus-visible, summary:focus-visible { outline: none; box-shadow: var(--focus); border-radius: var(--r-sm); }
+code {
+  font: 0.9em/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  background: var(--surface-muted);
+  border-radius: var(--r-sm);
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+/* Commando's als eigen blok: niet halverwege afbreken, zo nodig binnen het blok scrollen */
+pre.cmd {
+  margin: 0 0 12px; padding: 10px 12px;
+  background: var(--surface-muted); border-radius: var(--r-md);
+  color: var(--text); font: 13px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  overflow-x: auto;
+}
+pre.cmd code { background: none; padding: 0; font: inherit; white-space: pre; }
+svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+.wrap { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+
+/* Kop */
+.site-head { display: flex; align-items: center; justify-content: space-between; padding: 20px 0; }
+.brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-mark {
+  width: 32px; height: 32px; border-radius: var(--r-md);
+  background: var(--primary); color: var(--primary-fg);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.brand-mark svg { width: 18px; height: 18px; }
+.brand-name { font-weight: 600; font-size: 16px; letter-spacing: -0.2px; }
+.head-link { font-size: 14px; color: var(--text-2); text-decoration: none; }
+.head-link:hover { color: var(--text); text-decoration: underline; }
+
+/* Hero met de hoofdknop */
+.hero { text-align: center; padding: 48px 0 40px; }
+.hero h1 { margin: 0; font-size: clamp(30px, 6vw, 44px); line-height: 1.12; letter-spacing: -1.2px; font-weight: 700; text-wrap: balance; }
+.lead { margin: 16px auto 0; max-width: 560px; font-size: 17px; color: var(--text-2); text-wrap: balance; }
+.cta { margin-top: 32px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  min-height: 48px; padding: 0 24px;
+  background: var(--primary); color: var(--primary-fg);
+  border-radius: 10px; font-weight: 600; font-size: 16px; text-decoration: none;
+  transition: background 0.15s ease, transform 0.08s ease;
+}
+.btn-primary svg { width: 18px; height: 18px; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-primary:active { transform: scale(0.98); }
+.btn-primary:focus-visible { outline: none; box-shadow: var(--focus); }
+.cta-note { margin: 12px 0 0; font-size: 13.5px; color: var(--text-muted); }
+.cta-alt { margin: 6px 0 0; font-size: 14px; color: var(--text-2); }
+.notice {
+  display: inline-block; margin: 16px 0 0; padding: 10px 14px;
+  background: var(--orange-bg); border: 1px solid var(--orange-line); border-radius: var(--r-md);
+  color: var(--orange-text); font-size: 14px;
+}
+.is-disabled { opacity: 0.45; pointer-events: none; cursor: default; }
+
+/* Kaarten */
+.panel {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--r-lg);
+  padding: 20px 22px; margin-bottom: 20px;
+}
+.panel h2 { margin: 0 0 6px; font-size: 16px; font-weight: 600; letter-spacing: -0.2px; }
+.panel-intro { margin: 0 0 12px; font-size: 14px; color: var(--text-2); }
+
+/* Alle downloads */
+.dl-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.dl-row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto auto; gap: 16px; align-items: center;
+  padding: 12px 10px; margin: 0 -10px; border-top: 1px solid var(--border);
+}
+.dl-row:first-child { border-top: none; }
+.dl-row.is-match { background: var(--surface-muted); border-top-color: transparent; border-radius: var(--r-md); }
+.dl-row.is-match + .dl-row { border-top-color: transparent; }
+.dl-info { display: flex; flex-direction: column; min-width: 0; }
+.dl-os { font-weight: 600; font-size: 14.5px; display: inline-flex; align-items: center; gap: 8px; }
+.dl-desc { font-size: 13.5px; color: var(--text-muted); }
+.dl-meta { display: inline-flex; gap: 8px; font-size: 13px; color: var(--text-muted); white-space: nowrap; }
+.dl-size:empty { display: none; }
+.badge {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.2px;
+  padding: 1px 7px; border-radius: 999px;
+  background: var(--primary); color: var(--primary-fg);
+}
+.btn-secondary {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 34px; padding: 0 14px;
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: var(--r-md);
+  font-size: 13.5px; font-weight: 500; text-decoration: none; white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.btn-secondary:hover { background: var(--surface-muted); }
+.btn-secondary:focus-visible { outline: none; box-shadow: var(--focus); }
+.version-line { margin: 12px 0 0; font-size: 13px; color: var(--text-muted); }
+
+/* Eerste keer openen */
+details { border-top: 1px solid var(--border); }
+details:last-child { border-bottom: none; }
+summary { cursor: pointer; padding: 12px 0; font-weight: 500; font-size: 14.5px; }
+details > :not(summary) { font-size: 14px; color: var(--text-2); }
+details ol, details ul { margin: 0 0 12px; padding-left: 22px; }
+details li { margin: 4px 0; }
+details p { margin: 0 0 12px; }
+
+/* Wat Index doet */
+.features { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 8px 0 12px; }
+.feature { padding: 4px 2px; }
+.feature-icon {
+  width: 36px; height: 36px; border-radius: var(--r-md);
+  background: var(--surface-muted); color: var(--text);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.feature-icon svg { width: 18px; height: 18px; }
+.feature h3 { margin: 12px 0 4px; font-size: 14.5px; font-weight: 600; }
+.feature p { margin: 0; font-size: 13.5px; color: var(--text-muted); }
+
+.site-foot { padding: 28px 0 48px; text-align: center; font-size: 13px; color: var(--text-muted); }
+.site-foot p { margin: 0; }
+
+/* Smal scherm */
+@media (max-width: 640px) {
+  .hero { padding: 28px 0 32px; }
+  .lead { font-size: 16px; }
+  .btn-primary { width: 100%; justify-content: center; }
+  .features { grid-template-columns: minmax(0, 1fr); }
+  .panel { padding: 16px; }
+  .dl-row { grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; padding: 12px 8px; margin: 0 -8px; }
+  .dl-meta { grid-column: 1; grid-row: 2; }
+  .dl-row .btn-secondary { grid-column: 2; grid-row: 1 / span 2; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary, .btn-secondary { transition: none; }
+  .btn-primary:active { transform: none; }
+}
